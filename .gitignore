@@ -1,0 +1,8 @@
+node_modules
+.vscode-test/
+*.vsix
+.nyc_output/
+.env
+coverage/
+*.tgz
+test/workdir/temp/**

@@ -1,0 +1,12 @@
+.vscode/**
+.vscode-test/**
+test/**
+.gitignore
+.nyc_output
+coverage
+config
+.yarnrc
+vsc-extension-quickstart.md
+**/jsconfig.json
+**/*.map
+**/.eslintrc.json
