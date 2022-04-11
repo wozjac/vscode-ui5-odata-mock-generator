@@ -42,7 +42,7 @@
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
     "release": "standard-version",
-    "sed": "sed -i 's/\\.\\.\\///' ./out/coverage/lcov.info",
+    "sed": "sed -i 's/\\.\\.\\///g' out/coverage/lcov.info",
     "coveralls": "npm run sed && cat ./out/coverage/lcov.info | coveralls -v"
   },
   "devDependencies": {
