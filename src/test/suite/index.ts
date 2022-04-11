@@ -1,6 +1,6 @@
-const path = require("path");
-const Mocha = require("mocha");
-const glob = require("glob");
+import * as path from "path";
+import * as Mocha from "mocha";
+import * as glob from "glob";
 
 const doCoverage = true;
 
@@ -24,23 +24,25 @@ function setupCoverage() {
   return nyc;
 }
 
-async function run() {
+export async function run() {
   const nyc = doCoverage ? setupCoverage() : null;
 
   const mocha = new Mocha({
     ui: "bdd",
     color: true,
-    timeout: 10 * 1000
+    timeout: 10 * 1000,
   });
 
   const testsRoot = path.resolve(__dirname, "..");
   const files = glob.sync("**/*.test.js", { cwd: testsRoot });
-  files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
+  files.forEach((f) => mocha.addFile(path.resolve(testsRoot, f)));
 
   try {
     await new Promise((resolve, reject) =>
-      mocha.run(failures =>
-        failures ? reject(new Error(`${failures} tests failed`)) : resolve(undefined),
+      mocha.run((failures) =>
+        failures
+          ? reject(new Error(`${failures} tests failed`))
+          : resolve(undefined)
       )
     );
   } finally {
@@ -50,7 +52,3 @@ async function run() {
     }
   }
 }
-
-module.exports = {
-  run
-};

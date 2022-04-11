@@ -1,106 +1,122 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ODataMockGeneratorExtension = void 0;
 const vscode = require("vscode");
-const dataSource = require("./dataSource.js");
-const { ODataMockGenerator } = require("omg-odata-mock-generator/dist/cjs");
-
+const dataSource = require("./dataSource");
+const cjs_1 = require("omg-odata-mock-generator/dist/cjs");
 const logPrefix = "[VSCode-OData-Mock-Gen]";
-
 class ODataMockGeneratorExtension {
-  constructor() {
-    this._configuration = vscode.workspace.getConfiguration("");
-
-    this._rootUri = this._configuration.get("mockDataRootURI");
-    this._metadataPath = this._configuration.get("metadataPath");
-    this._mockRulesFilePath = this._configuration.get("mockRulesConfigFilePath");
-    this._mockDataDir = this._configuration.get("mockDataTargetDirectory");
-    this._numberOfEntities = this._configuration.get("defaultLengthOfEntitySets");
-    this._overwriteMockFiles = this._configuration.get("overwriteExistingMockFiles");
-
-    this._validateConfiguration();
-
-    if (this._metadataPath.indexOf("http") !== -1) {
-      this._isMetadataPathURL = true;
+    constructor() {
+        this.overwriteMockFiles = false;
+        this.isMetadataPathURL = false;
+        this.mockRules = "";
+        this.metadataText = "";
+        this.configuration =
+            vscode.workspace.getConfiguration("odataMockGenerator");
+        const rootUri = this.configuration.get("mockDataRootURI");
+        this.rootUri = rootUri ? rootUri : "";
+        const metadataPath = this.configuration.get("metadataPath");
+        if (metadataPath) {
+            this.metadataPath = metadataPath;
+        }
+        else {
+            throw new Error("Metadata path is empty");
+        }
+        const mockRulesFilesPath = this.configuration.get("mockRulesConfigFilePath");
+        if (mockRulesFilesPath) {
+            this.mockRulesFilePath = mockRulesFilesPath;
+        }
+        else {
+            this.mockRulesFilePath = "";
+        }
+        const mockDataDir = this.configuration.get("mockDataTargetDirectory");
+        if (mockDataDir) {
+            this.mockDataDir = mockDataDir;
+        }
+        else {
+            throw new Error("Target dir for mock data files is empty");
+        }
+        const numberOfEntities = this.configuration.get("defaultLengthOfEntitySets");
+        if (numberOfEntities) {
+            this.numberOfEntities = numberOfEntities;
+        }
+        else {
+            this.numberOfEntities = 30;
+        }
+        const overwriteMockFiles = this.configuration.get("overwriteExistingMockFiles");
+        if (overwriteMockFiles) {
+            this.overwriteMockFiles = overwriteMockFiles;
+        }
+        else {
+            this.overwriteMockFiles = false;
+        }
+        if (!this.isMetadataPathURL && this.metadataPath.startsWith("/")) {
+            throw new Error("Metadata file path should be a relative path");
+        }
+        if (this.metadataPath && this.metadataPath.indexOf("http") !== -1) {
+            this.isMetadataPathURL = true;
+        }
     }
-  }
-
-  async createMockData() {
-    await this._getMetadata();
-    await this._loadMockRulesConfig();
-
-    await dataSource.project.createDir(this._mockDataDir);
-
-    const options = {
-      defaultLengthOfEntitySets: this._numberOfEntities,
-      mockDataRootURI: this._rootUri,
-      rules: this._mockRules
-    };
-
-    const generator = new ODataMockGenerator(this._metadataText, options);
-    const mockData = generator.createMockData();
-
-    let content, filePath;
-    const overwrite = this._overwriteMockFiles;
-
-    const forLoop = async () => {
-      for (const key in mockData) {
-        filePath = `${this._mockDataDir}/${key}.json`;
-        content = JSON.stringify(mockData[key]);
-        await dataSource.project.writeFile(filePath, content, overwrite);
-      }
-    };
-
-    await forLoop();
-  }
-
-  async _getMetadata() {
-    try {
-      if (this._isMetadataPathURL) {
-        this._metadataText = await dataSource.internet.fetchTextFile(this._metadataPath);
-      } else {
-        this._metadataText = await dataSource.project.readFileContent(this._metadataPath);
-      }
-    } catch (error) {
-      console.error(`${logPrefix} ${error}`);
-      throw new Error(`Metatada from ${this._metadataPath} could not be read; ` +
-        "check the console for error details");
+    async createMockData() {
+        await this.getMetadata();
+        await this.loadMockRulesConfig();
+        await dataSource.project.createDir(this.mockDataDir);
+        const options = {
+            defaultLengthOfEntitySets: this.numberOfEntities,
+            mockDataRootURI: this.rootUri,
+            rules: this.mockRules,
+        };
+        const generator = new cjs_1.ODataMockGenerator(this.metadataText, options);
+        const mockData = generator.createMockData();
+        let content, filePath;
+        const overwrite = this.overwriteMockFiles;
+        const forLoop = async () => {
+            for (const key in mockData) {
+                filePath = `${this.mockDataDir}/${key}.json`;
+                content = JSON.stringify(mockData[key]);
+                await dataSource.project.writeFile(filePath, content, overwrite);
+            }
+        };
+        await forLoop();
     }
-  }
-
-  _validateConfiguration() {
-    if (!this._metadataPath) {
-      throw new Error("Metadata path is empty");
+    async getMetadata() {
+        try {
+            if (this.isMetadataPathURL) {
+                this.metadataText = await dataSource.internet.fetchTextFile(this.metadataPath);
+            }
+            else {
+                this.metadataText = await dataSource.project.readFileContent(this.metadataPath);
+            }
+        }
+        catch (error) {
+            console.error(`${logPrefix} ${error}`);
+            throw new Error(`Metatada from ${this.metadataPath} could not be read; ` +
+                "check the console for error details");
+        }
     }
-
-    if (!this._mockDataDir) {
-      throw new Error("Target dir for mock data files is empty");
+    async loadMockRulesConfig() {
+        let mockRulesPath;
+        if (!this.mockRulesFilePath) {
+            mockRulesPath = ".rules.json";
+        }
+        else {
+            mockRulesPath = `${this.mockRulesFilePath}/.rules.json`;
+        }
+        if (dataSource.project.fileExists(mockRulesPath)) {
+            try {
+                const mockRulesContent = await dataSource.project.readFileContent(mockRulesPath);
+                this.mockRules = JSON.parse(mockRulesContent);
+            }
+            catch (error) {
+                console.error(` ${error}`);
+                vscode.window.showWarningMessage(`Mock rules JSON from ${mockRulesPath} could not be parsed;` +
+                    "check the console for errors, continuing without it");
+            }
+        }
+        else {
+            console.info(`${logPrefix} Rules file .rules.json not found in ${mockRulesPath}; continuing without it`);
+        }
     }
-
-    if (!this._isMetadataPathURL && this._metadataPath.startsWith("/")) {
-      throw new Error("Metadata file path should be a relative path");
-    }
-  }
-
-  async _loadMockRulesConfig() {
-    let mockRulesPath;
-
-    if (!this._mockRulesFilePath) {
-      mockRulesPath = ".rules.json";
-    } else {
-      mockRulesPath = `${this._mockRulesFilePath}/.rules.json`;
-    }
-
-    if (dataSource.project.fileExists(mockRulesPath)) {
-      try {
-        const mockRulesContent = await dataSource.project.readFileContent(mockRulesPath);
-        this._mockRules = JSON.parse(mockRulesContent);
-      } catch (error) {
-        console.error(` ${error}`);
-        vscode.window.showWarningMessage(`Mock rules JSON from ${mockRulesPath} could not be parsed;` +
-          "check the console for errors, continuing without it");
-      }
-    } else {
-      console.info(`${logPrefix} Rules file .rules.json not found in ${mockRulesPath}; continuing without it`);
-    }
-  }
 }
-
-module.exports = ODataMockGeneratorExtension;
+exports.ODataMockGeneratorExtension = ODataMockGeneratorExtension;
+//# sourceMappingURL=ODataMockGeneratorExtension.js.map

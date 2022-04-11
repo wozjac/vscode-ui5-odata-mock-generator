@@ -1,8 +1,9 @@
-const vscode = require("vscode");
-const sinon = require("sinon");
+import { workspace } from "vscode";
+import { stub } from "sinon";
+import { ExtensionOptions } from "../../ODataMockGeneratorExtension";
 
-function stubVSCode(options) {
-  return sinon.stub(vscode.workspace, "getConfiguration").returns({
+export function stubVSCode(options) {
+  return stub(workspace, "getConfiguration").returns({
     get(option) {
       switch (option) {
         case "metadataPath":
@@ -20,8 +21,8 @@ function stubVSCode(options) {
       }
     }
   });
-};
+}
 
-module.exports = {
-  stubVSCode
+export default {
+  stubVSCode,
 };
