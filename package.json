@@ -42,7 +42,7 @@
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
     "release": "standard-version",
-    "coveralls": "cat ./out/coverage/lcov.info | coveralls"
+    "coveralls": "cat ./out/coverage/lcov.info | coveralls -v"
   },
   "devDependencies": {
     "@types/chai": "^4.3.0",
