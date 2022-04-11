@@ -36,13 +36,14 @@
     "rimraf": "./node_modules/rimraf/bin.js",
     "clean": "rimraf out/",
     "vscode:prepublish": "npm run compile",
-    "compile": "npm run clean && tsc -p config",
-    "watch": "tsc -watch -p config",
+    "compile": "npm run clean && tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "lint": "eslint -c config/.eslintrc.json src/**.*ts",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
     "release": "standard-version",
-    "coveralls": "cat ./out/coverage/lcov.info | coveralls -v"
+    "sed": "sed 's/\\.\\.\\\\//' ./out/coverage/lcov.info",
+    "coveralls": "npm run sed && cat ./out/coverage/lcov.info | coveralls -v"
   },
   "devDependencies": {
     "@types/chai": "^4.3.0",
