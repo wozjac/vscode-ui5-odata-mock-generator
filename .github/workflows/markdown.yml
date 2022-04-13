@@ -1,0 +1,15 @@
+name: Markdownlint
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Lint files
+        uses: articulate/actions-markdownlint@v1
+        with:
+          files: .
+          config: .config/markdownlint.json

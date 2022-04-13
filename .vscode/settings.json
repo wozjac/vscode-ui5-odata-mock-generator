@@ -3,5 +3,5 @@
     "configFile": "./config/.eslintrc.json"
   },
   "spellright.language": ["en"],
-  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
+  "spellright.documentTypes": ["latex", "plaintext"]
 }

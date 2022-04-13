@@ -1,11 +1,12 @@
-[![Build Status](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator.svg?branch=main)](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator)
-[![Coverage Status](https://coveralls.io/repos/github/wozjac/vscode-ui5-odata-mock-generator/badge.svg?branch=main)](https://coveralls.io/github/wozjac/vscode-ui5-odata-mock-generator?branch=main)
+<h1>[![Build Status](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator.svg?branch=main)](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator)
+[![Coverage Status](https://coveralls.io/repos/github/wozjac/vscode-ui5-odata-mock-generator/badge.svg?branch=main)](https://coveralls.io/github/wozjac/vscode-ui5-odata-mock-generator?branch=main)</h1>
 
 # VSCode-UI5: OData Mock Generator
 
 VSCode extension - an OData mock data files generator on steroids.  
 Generates JSON mock data files based on the provided OData metadata.
-Uses [OData Mock Generator](https://github.com/wozjac/omg-odata-mock-generator) under the hood, which is based on [OpenUI5 Mock Server](https://openui5.hana.ondemand.com/api/sap.ui.core.util.MockServer)
+Uses [OData Mock Generator](https://github.com/wozjac/omg-odata-mock-generator) under the hood,
+which is based on [OpenUI5 Mock Server](https://openui5.hana.ondemand.com/api/sap.ui.core.util.MockServer)
 
 ## Features
 
@@ -13,7 +14,8 @@ Uses [OData Mock Generator](https://github.com/wozjac/omg-odata-mock-generator) 
 - generate specific number of entities for given entity sets
 - skip generation of Entity Sets you don't need
 - provide sets of values, which should be used instead of pure random values
-- more meaningful and related data - values from one property can have a specific value based on a value from another property, which helps with building navigations
+- more meaningful and related data - values from one property can have a specific value
+  based on a value from another property, which helps with building navigations
 - force to have only distinct entries within an Entity Set (based on key properties)
 
 ## Installation
@@ -25,25 +27,37 @@ Search & install the extension via VSCode Extensions.
 After installation a new command is available:
 ![mock files](https://publicrepo.vipserv.org/images/vscode-mock/command.png)
 
-By default, the generator will look for a service metadata XML file in the project's root path _webapp/localService/metadata.xml_ and create mock data files in the _webapp/localService/mockdata_ folder. The path can be changed with the setting `metadataPath`. It can also be a URL to metadata, for example, https://services.odata.org/V3/OData/OData.svc/$metadata. The path for mock data files is set via `mockDataTargetDirectory`.
+By default, the generator will look for a service metadata XML file in the project's root path _webapp/
+localService/metadata.xml_ and create mock data files in the _webapp/localService/mockdata_ folder.
+The path can be changed with the setting `metadataPath`. It can also be a URL to metadata,
+for example, <https://services.odata.org/V3/OData/OData.svc/$metadata>. The path for mock data
+files is set via `mockDataTargetDirectory`.
 
 For the [Northwind test service](https://services.odata.org/V3/OData/OData.svc/$metadata):
 ![mock files](https://publicrepo.vipserv.org/images/vscode-mock/mock-files.png)
 
-By default each file has 30 entries (this is adjustable by the setting `defaultLengthOfEntitySets`) and new files will overwrite old ones (change this with `overwriteExistingMockFiles`). The length of data set can be also adjusted per entity set by using
+By default each file has 30 entries (this is adjustable by the setting `defaultLengthOfEntitySets`)
+and new files will overwrite old ones (change this with `overwriteExistingMockFiles`).
+The length of data set can be also adjusted per entity set by using
 using .rules.json file (explained later).
 
 The default root URI is an empty string, it can be changed by setting `mockDataRootURI`: "myURI".
 
 ## Configure mock data generation
 
-Additional options influencing data generation can be specified in _.rules.json_ file. This file is by default searched in the project root, but it can be changed using setting `mockRulesConfigFilePath`. The JSON provided in this file corresponds to the [_rules_ property](https://wozjac.github.io/omg-odata-mock-generator/ODataMockGenerator.html).
+Additional options influencing data generation can be specified in _.rules.json_ file.
+This file is by default searched in the project root, but it can be changed using setting
+`mockRulesConfigFilePath`. The JSON provided in this file corresponds to the
+[_rules_ property](https://wozjac.github.io/omg-odata-mock-generator/ODataMockGenerator.html).
 
-Below examples are based on the metadata from https://sapes5.sapdevcenter.com/sap/opu/odata/sap/ZSOCDS_SRV/
+Below examples are based on the metadata from <https://sapes5.sapdevcenter.com/sap/opu/odata/sap/ZSOCDS_SRV>
 
 ### Skipping mock data generation for entity sets
 
-If you don't want to generate files for given entity sets, because we prefer to have our own ones, then by using _"skipMockGeneration"_: [*EntitySetName1*,*EntitySetName2*] mock data generation will be skipped for them.  
+If you don't want to generate files for given entity sets, because we prefer to have our
+own ones, then by using _"skipMockGeneration"_: [_EntitySetName1_,_EntitySetName2_]
+mock data generation will be skipped for them.
+
 For example:
 
 ```javascript
@@ -54,7 +68,8 @@ For example:
 
 ### Setting number of generated entities
 
-_defaultLengthOfEntitySets_ settings sets the default number of generated entries; this can be overwritten for a specific entity sets using _rules.lengthOf_ option.
+_defaultLengthOfEntitySets_ settings sets the default number of generated entries;
+this can be overwritten for a specific entity sets using _rules.lengthOf_ option.
 
 Setting generation of 2 entries for Products, 12 for Categories:
 
@@ -69,7 +84,10 @@ Setting generation of 2 entries for Products, 12 for Categories:
 
 ### Using faker.js
 
-Faker.js [API methods](https://marak.github.io/faker.js/#toc5__anchor) can be provided and they will be used instead of default logic for data generation. Alternatively, Mustache-like string with several values can be also passed as described in the faker.js docs, for example `{{name.lastName}}, {{name.firstName}} {{name.suffix}}`.
+Faker.js [API methods](https://marak.github.io/faker.js/#toc5__anchor) can be provided
+and they will be used instead of default logic for data generation.
+Alternatively, Mustache-like string with several values can be also passed as described
+in the faker.js docs, for example `{{name.lastName}}, {{name.firstName}} {{name.suffix}}`.
 If the string property has \*MaxLength" attribute, generated value will be limited accordingly.
 
 ```javascript
@@ -98,7 +116,8 @@ For example:
 
 ### Predefined values
 
-If for some entities values should be randomly selected BUT from predefined set of values, then it can be configured in the following way:
+If for some entities values should be randomly selected BUT from predefined set of values,
+then it can be configured in the following way:
 
 ```javascript
 {
@@ -146,7 +165,8 @@ For some values it make sense to make them dependent on other values. This can b
 }
 ```
 
-Not all dependent values have to be provided; if a value is not found in the _values_ array, it will be generated as usual.
+Not all dependent values have to be provided; if a value is not found in the _values_ array,
+it will be generated as usual.
 
 For example we want to have valid set of IDs in
 
@@ -172,7 +192,8 @@ For example we want to have valid set of IDs in
 
 ### Re-using predefined values
 
-It is easier to keep predefined values in one place, as they might be used in several places. It can be done with help of special _variables_ property and special $ref:... handling:
+It is easier to keep predefined values in one place, as they might be used in several places.
+It can be done with help of special _variables_ property and special $ref:... handling:
 
 ```javascript
 {
@@ -224,10 +245,12 @@ For example:
 
 ### Distinct values
 
-Having predefined values for entities and their key properties, duplicated entries will be present, as the generator always produces the number of entries specified by the `defaultLengthOfEntitySets` or `lengthOf: {...`
+Having predefined values for entities and their key properties, duplicated entries will be present,
+as the generator always produces the number of entries specified by the
+`defaultLengthOfEntitySets` or `lengthOf: {...`
 property from .rules.json. To have only distinct values (based on all key properties):
 
-```
+```javascript
 {
     "variables": [...]
     "distinctValues": ["EnitytSet1", "EntitySet2"]
@@ -237,7 +260,7 @@ property from .rules.json. To have only distinct values (based on all key proper
 
 ### Sample .rules.json file
 
-Sample .rules.json file with all features, based on https://services.odata.org/V3/Northwind/Northwind.svc/$metadata
+Sample .rules.json file with all features, based on <https://services.odata.org/V3/Northwind/Northwind.svc/$metadata>
 
 ```javascript
 {
@@ -276,11 +299,15 @@ Sample .rules.json file with all features, based on https://services.odata.org/V
 
 This extension contributes the following settings:
 
-- `metadataPath`: the path to the OData service - URL or file path (relative to the project root). Default is webapp/localService/metadata.xml
+- `metadataPath`: the path to the OData service - URL or file path (relative to the project root).
+  Default is webapp/localService/metadata.xml
 - `mockDataRootURI`: the root URI for mock data entries. Default is "".
-- `mockDataTargetDirectory`: the target directory for generated mock data files. Default is webapp/localService/mockdata
-- `defaultLengthOfEntitySets`: default length of data set for each entity set. Default value is 30. It can be overridden in .rules.json
-- `overwriteExistingMockFiles`: overwrite existing files in the mock data target directory? Default is true.
+- `mockDataTargetDirectory`: the target directory for generated mock data files.
+  Default is webapp/localService/mockdata
+- `defaultLengthOfEntitySets`: default length of data set for each entity set.
+  Default value is 30. It can be overridden in .rules.json
+- `overwriteExistingMockFiles`: overwrite existing files in the mock data target directory?
+  Default is true.
 - `mockRulesConfigFilePath`: where .rules.json file should be searched for
 
 ## Release Notes
