@@ -1,5 +1,5 @@
-<h1>[![Build Status](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator.svg?branch=main)](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator)
-[![Coverage Status](https://coveralls.io/repos/github/wozjac/vscode-ui5-odata-mock-generator/badge.svg?branch=main)](https://coveralls.io/github/wozjac/vscode-ui5-odata-mock-generator?branch=main)</h1>
+[![Build Status](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator.svg?branch=main)](https://travis-ci.com/wozjac/vscode-ui5-odata-mock-generator)
+[![Coverage Status](https://coveralls.io/repos/github/wozjac/vscode-ui5-odata-mock-generator/badge.svg?branch=main)](https://coveralls.io/github/wozjac/vscode-ui5-odata-mock-generator?branch=main)
 
 # VSCode-UI5: OData Mock Generator
 

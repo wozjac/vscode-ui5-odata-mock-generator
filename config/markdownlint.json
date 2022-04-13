@@ -12,6 +12,7 @@
   "MD033": {
     "allowed_elements": ["h1"]
   },
+  "MD041": false,
   "no-hard-tabs": false,
   "whitespace": false
 }
