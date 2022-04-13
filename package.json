@@ -41,7 +41,7 @@
     "eslint": "eslint -c ./config/.eslintrc.json src/**.*ts",
     "lint": "npm run eslint && npm run commitlint && npm run markdownlint",
     "commitlint": "npx commitlint --from HEAD~1 --to HEAD --verbose -g ./config/commitlint.config.js",
-    "markdownlint": "npx markdownlint -c ./config/markdownlint.json **/*.md --ignore node_modules",
+    "markdownlint": "npx markdownlint -c ./config/markdownlint.json **/*.md",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
     "release": "standard-version",
@@ -80,12 +80,10 @@
     "omg-odata-mock-generator": "^1.2.1"
   },
   "contributes": {
-    "commands": [
-      {
-        "command": "vscode-ui5-odata-mock-generator.generateMockData",
-        "title": "VSCode-UI5: Generate OData mock data"
-      }
-    ],
+    "commands": [{
+      "command": "vscode-ui5-odata-mock-generator.generateMockData",
+      "title": "VSCode-UI5: Generate OData mock data"
+    }],
     "configuration": {
       "type": "object",
       "title": "VSCode-UI5: OData Mock Generator",
