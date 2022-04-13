@@ -3,12 +3,17 @@ name: Run linters
 on: [push]
 
 jobs:
-  commitlint:
+  linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - name: ESlint
+        run: npm run eslint
       - name: Commitlint
         uses: wagoid/commitlint-github-action@v2
         with:
