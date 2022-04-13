@@ -12,4 +12,4 @@ jobs:
         uses: articulate/actions-markdownlint@v1
         with:
           files: .
-          config: .config/markdownlint.json
+          config: ./config/markdownlint.json
