@@ -23,5 +23,6 @@ jobs:
       - name: Markdownlint
         uses: articulate/actions-markdownlint@v1
         with:
-          files: .
+          files: "**/*.md"
+          ignore: node_modules
           config: ./config/markdownlint.json
