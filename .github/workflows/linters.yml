@@ -1,0 +1,20 @@
+name: Run linters
+
+on: [push]
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Commitlint
+        uses: wagoid/commitlint-github-action@v2
+        with:
+          configFile: "./config/commitlint.config.js"
+      - name: Markdownlint
+        uses: articulate/actions-markdownlint@v1
+        with:
+          files: .
+          config: ./config/markdownlint.json
