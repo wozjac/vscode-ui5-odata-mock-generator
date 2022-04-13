@@ -65,6 +65,7 @@
     "eslint": "^7.19.0",
     "glob": "^7.1.6",
     "markdownlint": "^0.25.1",
+    "markdownlint-cli": "^0.31.1",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
@@ -78,10 +79,12 @@
     "omg-odata-mock-generator": "^1.2.1"
   },
   "contributes": {
-    "commands": [{
-      "command": "vscode-ui5-odata-mock-generator.generateMockData",
-      "title": "VSCode-UI5: Generate OData mock data"
-    }],
+    "commands": [
+      {
+        "command": "vscode-ui5-odata-mock-generator.generateMockData",
+        "title": "VSCode-UI5: Generate OData mock data"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "VSCode-UI5: OData Mock Generator",
