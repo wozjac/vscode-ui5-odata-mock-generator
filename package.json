@@ -42,7 +42,7 @@
     "lint": "npm run eslint && npm run commitlint && npm run markdownlint",
     "commitlint": "npx commitlint --from HEAD~1 --to HEAD --verbose -g ./config/commitlint.config.js",
     "markdownlint": "npx markdownlint -c ./config/markdownlint.json **/*.md",
-    "pretest": "npm run compile && npm run lint",
+    "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js",
     "release": "standard-version",
     "sed": "sed -i .bak 's/\\.\\.\\///g' ./out/coverage/lcov.info",
