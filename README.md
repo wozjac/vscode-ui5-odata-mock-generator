@@ -3,6 +3,9 @@
 
 # VSCode-UI5: OData Mock Generator
 
+_From version 1.0.1 - please migrate the settings to the ones prefixed with "Odata Mock Generator"._
+_The old ones will be removed in the next version._
+
 VSCode extension - an OData mock data files generator on steroids.  
 Generates JSON mock data files based on the provided OData metadata.
 Uses [OData Mock Generator](https://github.com/wozjac/omg-odata-mock-generator) under the hood,
