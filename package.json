@@ -117,6 +117,36 @@
           "type": "boolean",
           "default": true,
           "description": "Overwrite existing mock data files?"
+        },
+        "metadataPath": {
+          "type": "string",
+          "default": "webapp/localService/metadata.xml",
+          "description": "DEPRECATED, will be removed in the future version. Please move the setting to the one prefixed with \"Odata Mock Generator\". The path to the OData service - URL or file path (relative to the project root)"
+        },
+        "mockDataRootURI": {
+          "type": "string",
+          "default": "",
+          "description": "DEPRECATED, will be removed in the future version. Please move the setting to the one prefixed with \"Odata Mock Generator\". The root URI for mock data entries"
+        },
+        "mockDataTargetDirectory": {
+          "type": "string",
+          "default": "webapp/localService/mockdata",
+          "description": "DEPRECATED, will be removed in the future version. Please move the setting to the one prefixed with \"Odata Mock Generator\". The target directory for generated mock data files"
+        },
+        "mockRulesConfigFilePath": {
+          "type": "string",
+          "default": "",
+          "description": "DEPRECATED, will be removed in the future version. Please move the setting to the one prefixed with \"Odata Mock Generator\". The path to the folder with .rules.json file; default (empty) = project root"
+        },
+        "defaultLengthOfEntitySets": {
+          "type": "number",
+          "default": 30,
+          "description": "DEPRECATED, will be removed in the future version. Please move the setting to the one prefixed with \"Odata Mock Generator\". Default length of generated entries; it can be overridden for each entity set in .rules.json "
+        },
+        "overwriteExistingMockFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "DEPRECATED, will be removed in the future version. Please move the setting to the one prefixed with \"Odata Mock Generator\". Overwrite existing mock data files?"
         }
       }
     }
