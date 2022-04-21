@@ -11,6 +11,8 @@ Generates JSON mock data files based on the provided OData metadata.
 Uses [OData Mock Generator](https://github.com/wozjac/omg-odata-mock-generator) under the hood,
 which is based on [OpenUI5 Mock Server](https://openui5.hana.ondemand.com/api/sap.ui.core.util.MockServer)
 
+Please check the sample use case here: <https://jacekw.dev/blog/sdn/enhanced-odata-mocks-ui5>
+
 ## Features
 
 - use faker.js API methods for data generation
