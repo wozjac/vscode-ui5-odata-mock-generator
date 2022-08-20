@@ -1,7 +1,7 @@
 [![Build Status](https://github.com/wozjac/vscode-ui5-odata-mock-generator/actions/workflows/build.yml/badge.svg)](https://github.com/wozjac/vscode-ui5-odata-mock-generator/actions/workflows/build.yml)
 [![Coverage Status](https://coveralls.io/repos/github/wozjac/vscode-ui5-odata-mock-generator/badge.svg?branch=main)](https://coveralls.io/github/wozjac/vscode-ui5-odata-mock-generator?branch=main)
 
-# VSCode-UI5: OData Mock Generator
+# VSCode UI5: OData Mock Generator
 
 _From version 1.0.1 - please migrate the settings to the ones prefixed with "Odata Mock Generator"._
 _The old ones will be removed in the next version._
