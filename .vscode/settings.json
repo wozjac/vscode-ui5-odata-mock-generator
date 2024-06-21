@@ -1,8 +1,0 @@
-{
-  "eslint.options": {
-    "configFile": "./config/.eslintrc.json"
-  },
-  "spellright.language": ["en"],
-  "spellright.documentTypes": ["latex", "plaintext"],
-  "odataMockGenerator.defaultLengthOfEntitySets": 7
-}
