@@ -68,7 +68,7 @@
     "glob": "^7.1.6",
     "markdownlint": "^0.25.1",
     "markdownlint-cli": "^0.31.1",
-    "mocha": "^8.4.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
     "sinon": "^10.0.0",
