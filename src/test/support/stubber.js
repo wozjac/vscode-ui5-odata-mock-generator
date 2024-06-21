@@ -1,6 +1,5 @@
 import { workspace } from "vscode";
 import { stub } from "sinon";
-import { ExtensionOptions } from "../../ODataMockGeneratorExtension";
 
 export function stubVSCode(options) {
   return stub(workspace, "getConfiguration").returns({
@@ -19,7 +18,7 @@ export function stubVSCode(options) {
         case "mockRulesConfigFilePath":
           return options.mockRulesConfigFilePath;
       }
-    }
+    },
   });
 }
 
