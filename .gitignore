@@ -7,3 +7,4 @@ coverage/
 *.tgz
 test/workdir/temp/**
 out
+.vscode
