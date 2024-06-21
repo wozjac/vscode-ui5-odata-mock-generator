@@ -66,7 +66,7 @@
     "eslint": "^9.5.0",
     "glob": "^7.1.6",
     "globals": "^15.6.0",
-    "markdownlint": "^0.25.1",
+    "markdownlint": "^0.34.0",
     "markdownlint-cli": "^0.31.1",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
