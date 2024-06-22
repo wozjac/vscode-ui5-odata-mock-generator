@@ -40,7 +40,7 @@
     "watch": "tsc -watch -p ./",
     "eslint": "eslint -c ./config/eslint.config.js src/**/*",
     "lint": "npm run eslint && npm run commitlint && npm run markdownlint",
-    "commitlint": "npx commitlint --from HEAD~1 --to HEAD --verbose -g ./config/commitlint.config.js",
+    "commitlint": "npx commitlint --from HEAD~1 --to HEAD --verbose -g ./config/commitlint.config.mjs",
     "markdownlint": "npx markdownlint -c ./config/markdownlint.json **/*.md",
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js",
@@ -50,8 +50,8 @@
     "package": "vsce package"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.2.1",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.5.0",
     "@types/chai": "^4.3.0",
     "@types/eslint__js": "^8.42.3",
