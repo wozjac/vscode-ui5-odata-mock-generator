@@ -61,7 +61,6 @@ describe("ODataMockGeneratorExtension - creation with .rules.json file", async (
         categoryIds: [1, 2, 3],
       },
       distinctValues: ["Categories"],
-      /* eslint-disable @typescript-eslint/naming-convention */
       predefined: {
         Category: {
           ID: "$ref:categoryIds",
@@ -85,7 +84,6 @@ describe("ODataMockGeneratorExtension - creation with .rules.json file", async (
         },
       },
     };
-    /* eslint-enable @typescript-eslint/naming-convention */
 
     // put .rules.json
     await project.writeFile(
@@ -127,10 +125,8 @@ describe("ODataMockGeneratorExtension - creation with .rules.json file", async (
     const rules = {
       skipMockGeneration: ["Advertisements", "ProductDetails", "PersonDetails"],
       lengthOf: {
-        /* eslint-disable @typescript-eslint/naming-convention */
         Suppliers: 1,
         Persons: 2,
-        /* eslint-enable @typescript-eslint/naming-convention */
       },
     };
 
@@ -191,11 +187,9 @@ describe("ODataMockGeneratorExtension - creation with .rules.json file", async (
         "Categories",
       ],
       faker: {
-        /* eslint-disable @typescript-eslint/naming-convention */
         Product: {
           Name: "system.semver",
         },
-        /* eslint-enable @typescript-eslint/naming-convention */
       },
     };
 

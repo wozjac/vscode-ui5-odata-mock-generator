@@ -1,7 +1,6 @@
 import { run } from "../../extension";
 import { expect } from "chai";
 import { project } from "../../dataSource";
-import * as vscode from "vscode";
 import { stubVSCode } from "../support/stubber";
 import * as sinon from "sinon";
 import { checkMockFiles } from "../support/fileChecks";
