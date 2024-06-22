@@ -78,7 +78,7 @@
     "vsce": "^2.10.0"
   },
   "dependencies": {
-    "omg-odata-mock-generator": "^1.2.1"
+    "omg-odata-mock-generator": "^1.2.3"
   },
   "contributes": {
     "commands": [
