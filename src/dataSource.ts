@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 import { TextEncoder } from "util";
 
 let projPath: string;
