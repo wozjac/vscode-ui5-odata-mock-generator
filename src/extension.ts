@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { ODataMockGeneratorExtension } from "./ODataMockGeneratorExtension";
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand(
+  const disposable = vscode.commands.registerCommand(
     "vscode-ui5-odata-mock-generator.generateMockData",
     async () => {
       run();

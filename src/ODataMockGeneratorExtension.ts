@@ -10,7 +10,7 @@ export class ODataMockGeneratorExtension {
   private metadataPath: string;
   private mockRulesFilePath: string;
   private mockDataDir: string;
-  private numberOfEntities: Number;
+  private numberOfEntities: number;
   private overwriteMockFiles: boolean = false;
   private isMetadataPathURL: boolean = false;
   private mockRules: string = "";
@@ -54,7 +54,7 @@ export class ODataMockGeneratorExtension {
       throw new Error("Target dir for mock data files is empty");
     }
 
-    const numberOfEntities: Number | undefined = this.configuration.get<Number>(
+    const numberOfEntities: number | undefined = this.configuration.get<number>(
       "defaultLengthOfEntitySets"
     );
 

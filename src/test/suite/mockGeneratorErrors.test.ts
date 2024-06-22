@@ -2,10 +2,7 @@ import { run } from "../../extension";
 import { expect } from "chai";
 import * as sinon from "sinon";
 import { stubVSCode } from "../support/stubber";
-// import { project } from "../../dataSource";
 import * as vscode from "vscode";
-
-const logPrefix = "[VSCode-OData-Mock-Gen]";
 
 describe("ODataMockGeneratorExtension errors", async () => {
   afterEach(() => {
