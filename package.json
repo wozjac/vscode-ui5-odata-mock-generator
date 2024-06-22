@@ -78,7 +78,7 @@
     "typescript-eslint": "^8.0.0-alpha.10"
   },
   "dependencies": {
-    "omg-odata-mock-generator": "^1.2.3"
+    "omg-odata-mock-generator": "^1.2.4"
   },
   "contributes": {
     "commands": [
