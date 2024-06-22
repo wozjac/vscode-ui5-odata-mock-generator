@@ -19,6 +19,6 @@ jobs:
       - name: Commitlint
         uses: wagoid/commitlint-github-action@v6
         with:
-          configFile: "./config/commitlint.config.js"
+          configFile: "./config/commitlint.config.mjs"
       - name: Markdownlint
         run: npm run markdownlint
