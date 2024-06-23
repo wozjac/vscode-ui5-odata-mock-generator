@@ -92,7 +92,7 @@ Setting generation of 2 entries for Products, 12 for Categories:
 Faker.js [API methods](https://marak.github.io/faker.js/#toc5__anchor) can be provided
 and they will be used instead of default logic for data generation.
 Alternatively, Mustache-like string with several values can be also passed as described
-in the faker.js docs, for example `{{name.lastName}}, {{name.firstName}} {{name.suffix}}`.
+in the faker.js docs, for example `{{person.lastName}}, {{person.firstName}} {{person.suffix}}`.
 If the string property has \*MaxLength" attribute, generated value will be limited accordingly.
 
 ```javascript
