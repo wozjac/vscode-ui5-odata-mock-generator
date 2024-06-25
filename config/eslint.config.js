@@ -1,6 +1,7 @@
 const globals = require("globals");
 const js = require("@eslint/js");
 const tseslint = require("typescript-eslint");
+const pluginChaiFriendly = require("eslint-plugin-chai-friendly");
 
 module.exports = [
   {
@@ -14,6 +15,7 @@ module.exports = [
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  pluginChaiFriendly.configs.recommendedFlat,
   {
     languageOptions: {
       ecmaVersion: "latest",
@@ -28,6 +30,7 @@ module.exports = [
       curly: "warn",
       eqeqeq: "warn",
       "no-throw-literal": "warn",
+      "@typescript-eslint/no-unused-expressions": "off",
       semi: "off",
     },
   },
