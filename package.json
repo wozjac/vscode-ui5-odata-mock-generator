@@ -61,7 +61,7 @@
     "@types/vscode": "^1.90.0",
     "@vscode/test-electron": "^2.4.0",
     "@vscode/vsce": "^2.29.0",
-    "chai": "^4.3.6",
+    "chai": "^5.1.1",
     "coveralls-next": "^4.2.1",
     "eslint": "^9.5.0",
     "eslint-plugin-chai-friendly": "^1.0.0",
