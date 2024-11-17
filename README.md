@@ -329,7 +329,7 @@ Feel free to contact me:
 
 - <wozjac@zoho.com>
 - [jacekw.dev](https://jacekw.dev)
-- Twitter (<https://twitter.com/jacekwoz>)
+- Bluesky (<https://jacekwoz.bsky.social>)
 - LinkedIn (<https://www.linkedin.com/in/jacek-wznk>)
 
 Icon based on a one from <https://www.freepik.com> / <https://www.flaticon.com/>
