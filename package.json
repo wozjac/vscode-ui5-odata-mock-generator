@@ -2,7 +2,7 @@
   "name": "vscode-ui5-odata-mock-generator",
   "displayName": "VSCode UI5: OData Mock Generator",
   "description": "VSCode extension: configurable generation of mock data files for OData services",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "license": "MIT",
   "engines": {
     "vscode": "^1.90.0"
