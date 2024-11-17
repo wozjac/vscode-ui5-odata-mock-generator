@@ -1,9 +1,9 @@
-const globals = require("globals");
-const js = require("@eslint/js");
-const tseslint = require("typescript-eslint");
-const pluginChaiFriendly = require("eslint-plugin-chai-friendly");
+import globals from "globals";
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+import pluginChaiFriendly from "eslint-plugin-chai-friendly";
 
-module.exports = [
+export default [
   {
     ignores: [
       "node_modules/**",
