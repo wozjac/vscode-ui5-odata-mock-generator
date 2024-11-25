@@ -67,7 +67,7 @@
     "eslint-plugin-chai-friendly": "^1.0.1",
     "glob": "^11.0.0",
     "globals": "^15.12.0",
-    "markdownlint-cli": "^0.42.0",
+    "markdownlint-cli": "^0.43.0",
     "mocha": "^10.8.2",
     "nyc": "^17.1.0",
     "omg-odata-mock-generator": "^1.2.5",
