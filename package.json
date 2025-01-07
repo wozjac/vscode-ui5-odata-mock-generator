@@ -28,9 +28,6 @@
     "mock server",
     "vscode"
   ],
-  "activationEvents": [
-    "onCommand:vscode-ui5-odata-mock-generator.generateMockData"
-  ],
   "main": "./out/extension.js",
   "scripts": {
     "clean": "npx rimraf out/",
@@ -70,13 +67,15 @@
     "markdownlint-cli": "^0.42.0",
     "mocha": "^10.8.2",
     "nyc": "^17.1.0",
-    "omg-odata-mock-generator": "^1.2.5",
     "rimraf": "^6.0.1",
     "sinon": "^19.0.2",
     "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.14.0"
+  },
+  "dependencies": {
+    "omg-odata-mock-generator": "^1.2.5"
   },
   "contributes": {
     "commands": [
