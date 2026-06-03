@@ -30,7 +30,7 @@ Search & install the extension via VSCode Extensions.
 ## How it works
 
 After installation a new command is available:
-![mock files](https://publicrepo.vipserv.org/images/vscode-mock/command.png)
+![mock files](https://public.mass.x14.eu/vscode-odata/command.png)
 
 By default, the generator will look for a service metadata XML file in the project's root path _webapp/
 localService/metadata.xml_ and create mock data files in the _webapp/localService/mockdata_ folder.
@@ -39,7 +39,7 @@ for example, <https://services.odata.org/V3/OData/OData.svc/$metadata>. The path
 files is set via `mockDataTargetDirectory`.
 
 For the [Northwind test service](https://services.odata.org/V3/OData/OData.svc/$metadata):
-![mock files](https://publicrepo.vipserv.org/images/vscode-mock/mock-files.png)
+![mock files](https://public.mass.x14.eu/vscode-odata/files.png)
 
 By default each file has 30 entries (this is adjustable by the setting `defaultLengthOfEntitySets`)
 and new files will overwrite old ones (change this with `overwriteExistingMockFiles`).
