@@ -84,7 +84,7 @@ export const vscodeFs = {
 
   deleteDir(dir: string) {
     const path = vscode.Uri.file(dir);
-    fs.rmdirSync(path.fsPath, { recursive: true });
+    fs.rmSync(path.fsPath, { recursive: true, force: true });
   },
 
   listDir(dir: string) {
