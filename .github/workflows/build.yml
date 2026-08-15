@@ -29,6 +29,7 @@ jobs:
         if: runner.os == 'Linux'
       - name: Coveralls
         uses: coverallsapp/github-action@v2.3.0
+        if: runner.os == 'Linux'
         with:
           github-token: ${{ github.token }}
           file: ./out/coverage/lcov.info
